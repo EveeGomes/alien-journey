@@ -6,6 +6,9 @@ Build
 Content
 Assets
 
+# Rider
+.idea/
+
 .vscode
 .vs
 *.VC.db
