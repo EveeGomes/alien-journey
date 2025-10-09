@@ -8,6 +8,8 @@
 #include "AlienJPlayerController.generated.h"
 
 class UInputMappingContext;
+class UInputAction;
+struct FInputActionValue;
 
 /**
  * Used to associate the Enhanced Input Action(s) and Input Mapping Context(s), assets created in the editor, with a character.
@@ -23,8 +25,15 @@ public:
 protected:
 	// Add the IMC
 	virtual void BeginPlay() override;
+	virtual void SetupInputComponent() override;
 
 private:
 	UPROPERTY(EditAnywhere, Category = Input)
 	TObjectPtr<UInputMappingContext> AlienJContext;
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	TObjectPtr<UInputAction> MoveAction;
+
+	// Internal function that handles input coming from input action, MoveAction
+	void Move(const FInputActionValue& InputActionValue);
 };
