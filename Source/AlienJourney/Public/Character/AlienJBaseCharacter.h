@@ -17,11 +17,9 @@ class ALIENJOURNEY_API AAlienJBaseCharacter : public ACharacter
 	GENERATED_BODY()
 
 public:
-	
 	AAlienJBaseCharacter();
 
 protected:
-
 	virtual void BeginPlay() override;
 
 private:	
