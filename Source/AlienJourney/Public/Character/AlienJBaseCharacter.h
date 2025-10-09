@@ -6,6 +6,10 @@
 #include "GameFramework/Character.h"
 #include "AlienJBaseCharacter.generated.h"
 
+/*
+ * Base class for Player and AI/NPC characters.
+ */
+
 UCLASS()
 class ALIENJOURNEY_API AAlienJBaseCharacter : public ACharacter
 {
