@@ -50,7 +50,7 @@ void AAlienJPlayerController::Move(const FInputActionValue& InputActionValue)
 	const FVector2D InputAxisVector = InputActionValue.Get<FVector2D>();
 
 	const FRotator Rotation = GetControlRotation();
-	const FRotator YawRotation(0.0f, Rotation.Yaw, 0.0f);
+	const FRotator YawRotation{0.0f, Rotation.Yaw, 0.0f};
 
 	const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 	const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);

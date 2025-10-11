@@ -13,5 +13,8 @@ UCLASS()
 class ALIENJOURNEY_API AAlienJCharacter : public AAlienJBaseCharacter
 {
 	GENERATED_BODY()
+
+public:
+	AAlienJCharacter();
 	
 };

@@ -3,3 +3,7 @@
 
 #include "Character/AlienJAICharacter.h"
 
+AAlienJAICharacter::AAlienJAICharacter()
+{
+
+}
