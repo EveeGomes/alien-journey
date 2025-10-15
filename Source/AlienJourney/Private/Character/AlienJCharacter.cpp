@@ -17,3 +17,17 @@ AAlienJCharacter::AAlienJCharacter()
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
 }
+
+void AAlienJCharacter::SetCollectableAmount(const int InAmount)
+{
+	if (InAmount > 0)
+	{
+		CollectableAmount += InAmount;
+		UE_LOG(LogTemp, Warning, TEXT("Test: collectable amount: %d"), CollectableAmount);
+	}
+}
+
+void AAlienJCharacter::SetOverlappingObject(AAlienJBaseInteractableObj* InteractableObj)
+{
+	InteractableObject = InteractableObj;
+}

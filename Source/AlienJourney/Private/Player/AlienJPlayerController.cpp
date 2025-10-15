@@ -2,14 +2,19 @@
 
 
 #include "Player/AlienJPlayerController.h"
-#include "InputMappingContext.h"
+// #include "InputMappingContext.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "Character/AlienJCharacter.h"
 
 
 AAlienJPlayerController::AAlienJPlayerController()
 {
 	bReplicates = true;
+
+	//Create InteractionComponent here?
+	// InteractionComponent = CreateDefaultSubobject<UAlienJInteractionComponent>(TEXT("InteractionComponent"));
+	
 }
 
 void AAlienJPlayerController::BeginPlay()
@@ -43,6 +48,7 @@ void AAlienJPlayerController::SetupInputComponent()
 	UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent);
 
 	EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AAlienJPlayerController::Move);
+	EnhancedInputComponent->BindAction(PressEAction, ETriggerEvent::Started, this, &AAlienJPlayerController::Interact);
 }
 
 void AAlienJPlayerController::Move(const FInputActionValue& InputActionValue)
@@ -64,4 +70,23 @@ void AAlienJPlayerController::Move(const FInputActionValue& InputActionValue)
 		ControlledPawn->AddMovementInput(RightDirection, InputAxisVector.X);
 	}
 	
+}
+
+void AAlienJPlayerController::Interact()
+{
+	// Get the character
+	// Check if it's a BaseInteractableObj
+	// if so, print a message log
+	AAlienJCharacter* AlienCharacter = Cast<AAlienJCharacter>(GetPawn());
+	if (AlienCharacter && AlienCharacter->GetInteractableObject())
+	{
+		UE_LOG(LogTemp, Display, TEXT("AlienJ Interact"));
+		AlienCharacter->SetCollectableAmount(AlienCharacter->GetInteractableObject()->GetInteractableValue());
+	}
+	
+	
+	// if (InteractionComponent)
+	// {
+	// 	InteractionComponent->Interact();	
+	// }
 }

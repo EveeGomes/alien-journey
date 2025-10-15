@@ -2,10 +2,13 @@
 
 #pragma once
 
+
 #include "CoreMinimal.h"
+#include "Components/AlienJInteractionComponent.h"
 #include "GameFramework/PlayerController.h"
 
 #include "AlienJPlayerController.generated.h"
+
 
 class UInputMappingContext;
 class UInputAction;
@@ -21,6 +24,7 @@ class ALIENJOURNEY_API AAlienJPlayerController : public APlayerController
 
 public:
 	AAlienJPlayerController();
+
 	
 protected:
 	// Add the IMC
@@ -28,12 +32,21 @@ protected:
 	virtual void SetupInputComponent() override;
 
 private:
-	UPROPERTY(EditAnywhere, Category = Input)
+	// UPROPERTY(EditAnywhere, Category = "Interactable")
+	// TObjectPtr<UAlienJInteractionComponent> InteractionComponent;
+	
+	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputMappingContext> AlienJContext;
 
-	UPROPERTY(EditAnywhere, Category = Input)
+	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputAction> MoveAction;
+
+	UPROPERTY(EditAnywhere, Category = "Input")
+	TObjectPtr<UInputAction> PressEAction;
 
 	// Internal function that handles input coming from input action, MoveAction
 	void Move(const FInputActionValue& InputActionValue);
+
+	// Should call Interact() from InteractionComponent?
+	void Interact();
 };
