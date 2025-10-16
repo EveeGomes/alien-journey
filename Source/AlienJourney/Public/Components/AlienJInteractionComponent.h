@@ -29,7 +29,6 @@ public:
 	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Interaction | Collision")
 	// TObjectPtr<UPrimitiveComponent> TargetInteractionComponent;
 	
-	
 	/********************** METHODS **********************/
 	
 	// Sets default values for this component's properties
@@ -39,8 +38,8 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	// Called from AAlienJPlayerController::Interact()
-	UFUNCTION(BlueprintCallable, Category = "Interation")
-	void TryInteract(AActor* Interactor);
+	// UFUNCTION(BlueprintCallable, Category = "Interation")
+	virtual void TryInteract(AActor* Interactor);
 	
 protected:
 	// Used by the actor to trigger overlaps. Also used to bind to overlap delegates.
@@ -98,6 +97,6 @@ private:
 	UPrimitiveComponent* GetBestCollisionComponent();
 
 
-	void PerformTrace();
-	void UpdateFocus(TScriptInterface<IAlienJInteractable> NewInteractable);
+	// void PerformTrace();
+	// void UpdateFocus(TScriptInterface<IAlienJInteractable> NewInteractable);
 };

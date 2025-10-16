@@ -164,14 +164,15 @@ void UAlienJInteractionComponent::TryInteract(AActor* Interactor)
 {
 	if (!Interactor) return;
 	
-	UE_LOG(LogTemp, Warning, TEXT("Test: Interacted with %s"), *Interactor->GetName());
-
-	/*
-	 *  TODO: Check the object tag.
-	 *  According to the tag, call the corresponding method:
-	 *		tag == collectable -> Collect()
-	 *		tag == breakable -> Break()
-	 *		tag == door -> Open/Close()
-	 */
+	//
+	// UE_LOG(LogTemp, Warning, TEXT("Test: Interacted with %s"), *Interactor->GetName());
+	//
+	// /*
+	//  *  TODO: Check the object tag.
+	//  *  According to the tag, call the corresponding method:
+	//  *		tag == collectable -> Collect()
+	//  *		tag == breakable -> Break()
+	//  *		tag == door -> Open/Close()
+	//  */
 }
 
