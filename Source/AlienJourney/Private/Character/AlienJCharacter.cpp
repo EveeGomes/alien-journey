@@ -2,11 +2,18 @@
 
 
 #include "Character/AlienJCharacter.h"
+#include "Components/WidgetComponent.h"
 
 #include "GameFramework/CharacterMovementComponent.h"
 
 AAlienJCharacter::AAlienJCharacter()
 {
+	// Create and set the widget
+	InteractPromptWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("InteractPromtWidget"));
+	InteractPromptWidget->SetupAttachment(RootComponent);
+	// InteractPromptWidget->SetWidgetClass() // via BP?
+	InteractPromptWidget->SetVisibility(false);
+	
 	// Typical set up for a Top-Down game
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator{0.f, 400.f, 0.f};
@@ -18,6 +25,21 @@ AAlienJCharacter::AAlienJCharacter()
 	bUseControllerRotationRoll = false;
 }
 
+void AAlienJCharacter::SetInteractWidgetVisibility(bool Visibility)
+{
+	InteractPromptWidget->SetVisibility(Visibility);
+}
+
+UAlienJInteractionComponent* AAlienJCharacter::GetInteractionComponent()
+{
+	if (CurrentInteractionComponent)
+	{
+		return CurrentInteractionComponent;
+	}
+
+	return nullptr;
+}
+
 void AAlienJCharacter::SetCollectableAmount(const int InAmount)
 {
 	if (InAmount > 0)
@@ -27,7 +49,9 @@ void AAlienJCharacter::SetCollectableAmount(const int InAmount)
 	}
 }
 
-void AAlienJCharacter::SetOverlappingObject(AAlienJBaseInteractableObj* InteractableObj)
+void AAlienJCharacter::SetCurrentInteractable(UAlienJInteractionComponent* InteractableComponent)
 {
-	InteractableObject = InteractableObj;
+	// IAlienJInteractable::SetCurrentInteractable_Implementation(InteractableComponent);
+	
+	CurrentInteractionComponent = InteractableComponent;
 }

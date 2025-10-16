@@ -69,20 +69,26 @@ void AAlienJPlayerController::Move(const FInputActionValue& InputActionValue)
 		// Move Right or Left
 		ControlledPawn->AddMovementInput(RightDirection, InputAxisVector.X);
 	}
-	
 }
 
 void AAlienJPlayerController::Interact()
 {
-	// Get the character
-	// Check if it's a BaseInteractableObj
-	// if so, print a message log
 	AAlienJCharacter* AlienCharacter = Cast<AAlienJCharacter>(GetPawn());
-	if (AlienCharacter && AlienCharacter->GetInteractableObject())
+	if (AlienCharacter && AlienCharacter->GetInteractionComponent())
 	{
-		UE_LOG(LogTemp, Display, TEXT("AlienJ Interact"));
-		AlienCharacter->SetCollectableAmount(AlienCharacter->GetInteractableObject()->GetInteractableValue());
+		AlienCharacter->GetInteractionComponent()->TryInteract(AlienCharacter);
+		UE_LOG(LogTemp, Display, TEXT("Test: AlienJ Interact"));
 	}
+	
+	// // Get the character
+	// // Check if it's a BaseInteractableObj
+	// // if so, print a message log
+	// AAlienJCharacter* AlienCharacter = Cast<AAlienJCharacter>(GetPawn());
+	// if (AlienCharacter && AlienCharacter->GetInteractableObject())
+	// {
+	// 	UE_LOG(LogTemp, Display, TEXT("AlienJ Interact"));
+	// 	AlienCharacter->SetCollectableAmount(AlienCharacter->GetInteractableObject()->GetInteractableValue());
+	// }
 	
 	
 	// if (InteractionComponent)

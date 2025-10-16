@@ -6,6 +6,7 @@
 #include "UObject/Interface.h"
 #include "AlienJInteractable.generated.h"
 
+class UAlienJInteractionComponent;
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
 class UAlienJInteractable : public UInterface
@@ -37,6 +38,7 @@ public:
 	// UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interaction")
 	// void OnInteract(AActor* InteractActor);
 
-	virtual void SetOverlappingObject(AAlienJBaseInteractableObj* InteractableObj);
+	// UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interaction")
+	virtual void SetCurrentInteractable(UAlienJInteractionComponent* InteractableComponent) = 0;
 	
 };

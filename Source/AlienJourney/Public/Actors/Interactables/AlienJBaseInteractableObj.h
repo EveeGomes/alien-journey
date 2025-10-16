@@ -27,6 +27,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	
 	int GetInteractableValue() const { return Value; }
+	UPrimitiveComponent* GetOverlapVolume() const { return OverlapVolume; }
 	
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interactable")
@@ -41,28 +42,4 @@ protected:
 	/* Methods */
 	
 	virtual void BeginPlay() override;
-
-	/* Overlap callbacks to be bound to overlap delegates from PrimitiveComponent. */
-	// Checks whether OtherActor implements AlienJInteractable interface, and if so calls SetOverlappingObject() passing this.
-	UFUNCTION()
-	virtual void OnSphereOverlap
-	(
-		UPrimitiveComponent* OverlappedComponent,
-		AActor* OtherActor,
-		UPrimitiveComponent* OtherComp,
-		int32 OtherBodyIndex,
-		bool bFromSweep,
-		const FHitResult& SweepResult
-	);
-	
-	// Checks whether OtherActor implements AlienJInteractable interface, and if so calls SetOverlappingObject() passing nullptr.
-	UFUNCTION()
-	virtual void OnSphereEndOverlap
-	(
-		UPrimitiveComponent* OverlappedComponent,
-		AActor* OtherActor,
-		UPrimitiveComponent* OtherComp,
-		int32 OtherBodyIndex
-	);
-	
 };

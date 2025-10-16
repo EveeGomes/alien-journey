@@ -4,6 +4,6 @@
 #include "Interface/AlienJInteractable.h"
 
 // Add default functionality here for any IAlienJInteractable functions that are not pure virtual.
-void IAlienJInteractable::SetOverlappingObject(AAlienJBaseInteractableObj* InteractableObj)
-{
-}
+// void IAlienJInteractable::SetOverlappingObject(AAlienJBaseInteractableObj* InteractableObj)
+// {
+// }
