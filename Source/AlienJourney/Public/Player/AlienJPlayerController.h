@@ -32,9 +32,6 @@ protected:
 	virtual void SetupInputComponent() override;
 
 private:
-	// UPROPERTY(EditAnywhere, Category = "Interactable")
-	// TObjectPtr<UAlienJInteractionComponent> InteractionComponent;
-	
 	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputMappingContext> AlienJContext;
 
@@ -43,6 +40,8 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputAction> PressEAction;
+
+	/********************** METHODS **********************/
 
 	// Internal function that handles input coming from input action, MoveAction
 	void Move(const FInputActionValue& InputActionValue);

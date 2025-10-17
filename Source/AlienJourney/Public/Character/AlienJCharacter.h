@@ -7,7 +7,6 @@
 
 #include "CoreMinimal.h"
 #include "Character/AlienJBaseCharacter.h"
-#include "Components/AlienJInteractionComponent.h"
 #include "AlienJCharacter.generated.h"
 
 class UWidgetComponent;
@@ -21,26 +20,20 @@ class ALIENJOURNEY_API AAlienJCharacter : public AAlienJBaseCharacter, public IA
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interactable")
-	TObjectPtr<UWidgetComponent> InteractPromptWidget;
-	
 	AAlienJCharacter();
-	void SetInteractWidgetVisibility(bool Visibility);
-
-	UAlienJInteractionComponent* GetInteractionComponent();	
-
+	
 	void SetCollectableAmount(int InAmount);
 	int GetCollectableAmount() const { return CollectableAmount; }
 
-	// AAlienJBaseInteractableObj* GetInteractableObject() { return InteractableObject; }
-
+	AAlienJBaseInteractableObj* GetCurrentInteractableObj() { return CurrentInteractableObj; }
+	virtual void SetCurrentInteractableObj(AAlienJBaseInteractableObj* InteractableObj) override;
+	
 protected:
-	virtual void SetCurrentInteractable(UAlienJInteractionComponent* InteractableComponent) override;
 	
 private:
 	// UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
 	int CollectableAmount {0};
 	
 	UPROPERTY(VisibleAnywhere, Category = "Interactable", meta = (AllowPrivateAccess = "true"))
-	TObjectPtr<UAlienJInteractionComponent> CurrentInteractionComponent;
+	TObjectPtr<AAlienJBaseInteractableObj> CurrentInteractableObj;
 };

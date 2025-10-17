@@ -23,11 +23,6 @@ class ALIENJOURNEY_API UAlienJInteractionComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Interaction | Type")
-	FName InteractableTag;
-
-	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Interaction | Collision")
-	// TObjectPtr<UPrimitiveComponent> TargetInteractionComponent;
 	
 	/********************** METHODS **********************/
 	
@@ -37,9 +32,9 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	// Called from AAlienJPlayerController::Interact()
-	// UFUNCTION(BlueprintCallable, Category = "Interation")
-	virtual void TryInteract(AActor* Interactor);
+	// // Called from AAlienJPlayerController::Interact()
+	// // UFUNCTION(BlueprintCallable, Category = "Interation")
+	// virtual void TryInteract(AActor* Interactor);
 	
 protected:
 	// Used by the actor to trigger overlaps. Also used to bind to overlap delegates.
@@ -52,29 +47,29 @@ protected:
 	// Bind callbacks to CollisionComponent overlap delegates.
 	virtual void BeginPlay() override;
 
-	/* Collision - Overlap */
-	/* Overlap callbacks to be bound to overlap delegates from PrimitiveComponent. */
-	// Checks whether OtherActor implements AlienJInteractable interface, and if so calls SetOverlappingObject() passing this.
-	UFUNCTION()
-	virtual void OnSphereOverlap
-	(
-		UPrimitiveComponent* OverlappedComponent,
-		AActor* OtherActor,
-		UPrimitiveComponent* OtherComp,
-		int32 OtherBodyIndex,
-		bool bFromSweep,
-		const FHitResult& SweepResult
-	);
-	
-	// Checks whether OtherActor implements AlienJInteractable interface, and if so calls SetOverlappingObject() passing nullptr.
-	UFUNCTION()
-	virtual void OnSphereEndOverlap
-	(
-		UPrimitiveComponent* OverlappedComponent,
-		AActor* OtherActor,
-		UPrimitiveComponent* OtherComp,
-		int32 OtherBodyIndex
-	);
+	// /* Collision - Overlap */
+	// /* Overlap callbacks to be bound to overlap delegates from PrimitiveComponent. */
+	// // Checks whether OtherActor implements AlienJInteractable interface, and if so calls SetOverlappingObject() passing this.
+	// UFUNCTION()
+	// virtual void OnSphereOverlap
+	// (
+	// 	UPrimitiveComponent* OverlappedComponent,
+	// 	AActor* OtherActor,
+	// 	UPrimitiveComponent* OtherComp,
+	// 	int32 OtherBodyIndex,
+	// 	bool bFromSweep,
+	// 	const FHitResult& SweepResult
+	// );
+	//
+	// // Checks whether OtherActor implements AlienJInteractable interface, and if so calls SetOverlappingObject() passing nullptr.
+	// UFUNCTION()
+	// virtual void OnSphereEndOverlap
+	// (
+	// 	UPrimitiveComponent* OverlappedComponent,
+	// 	AActor* OtherActor,
+	// 	UPrimitiveComponent* OtherComp,
+	// 	int32 OtherBodyIndex
+	// );
 
 private:
 	/* Configuration */
@@ -93,8 +88,8 @@ private:
 	/********************** METHODS **********************/
 	/* Collision */
 	// Iterates over all components on the owner actor to find the best component for collision/overlapping events
-	UPrimitiveComponent* FindBestCollisionComponent();
-	UPrimitiveComponent* GetBestCollisionComponent();
+	// UPrimitiveComponent* FindBestCollisionComponent();
+	// UPrimitiveComponent* GetBestCollisionComponent();
 
 
 	// void PerformTrace();

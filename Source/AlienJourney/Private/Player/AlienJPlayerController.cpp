@@ -6,6 +6,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "Character/AlienJCharacter.h"
+#include "Actors/Interactables/AlienJBaseInteractableObj.h"
 
 
 AAlienJPlayerController::AAlienJPlayerController()
@@ -74,10 +75,10 @@ void AAlienJPlayerController::Move(const FInputActionValue& InputActionValue)
 void AAlienJPlayerController::Interact()
 {
 	AAlienJCharacter* AlienCharacter = Cast<AAlienJCharacter>(GetPawn());
-	if (AlienCharacter && AlienCharacter->GetInteractionComponent())
+	if (AlienCharacter && AlienCharacter->GetCurrentInteractableObj())
 	{
-		AlienCharacter->GetInteractionComponent()->TryInteract(AlienCharacter);
-		UE_LOG(LogTemp, Display, TEXT("Test: AlienJ Interact"));
+		AlienCharacter->GetCurrentInteractableObj()->TryInteract(AlienCharacter);
+		UE_LOG(LogTemp, Display, TEXT("Test: AlienJ Interact with %s"), *AlienCharacter->GetCurrentInteractableObj()->GetName());
 	}
 	
 	// // Get the character
@@ -88,11 +89,5 @@ void AAlienJPlayerController::Interact()
 	// {
 	// 	UE_LOG(LogTemp, Display, TEXT("AlienJ Interact"));
 	// 	AlienCharacter->SetCollectableAmount(AlienCharacter->GetInteractableObject()->GetInteractableValue());
-	// }
-	
-	
-	// if (InteractionComponent)
-	// {
-	// 	InteractionComponent->Interact();	
 	// }
 }

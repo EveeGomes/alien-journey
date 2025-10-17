@@ -39,6 +39,6 @@ public:
 	// void OnInteract(AActor* InteractActor);
 
 	// UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interaction")
-	virtual void SetCurrentInteractable(UAlienJInteractionComponent* InteractableComponent) = 0;
+	virtual void SetCurrentInteractableObj(AAlienJBaseInteractableObj* InteractableObj) = 0;
 	
 };

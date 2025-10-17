@@ -3,13 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayTagContainer.h"
+
 #include "Components/AlienJInteractionComponent.h"
 #include "AlienJDoorInteractionComponent.generated.h"
 
 /**
  * 
  */
-UCLASS()
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class ALIENJOURNEY_API UAlienJDoorInteractionComponent : public UAlienJInteractionComponent
 {
 	GENERATED_BODY()
@@ -17,9 +19,12 @@ class ALIENJOURNEY_API UAlienJDoorInteractionComponent : public UAlienJInteracti
 public:
 	UAlienJDoorInteractionComponent();
 
-	virtual void TryInteract(AActor* Interactor) override;
+	// virtual void TryInteract(AActor* Interactor) override;
 
 protected:
+	UPROPERTY(EditAnywhere, Category = "Interaction")
+	FGameplayTagContainer DoorStateTags;
+	
 	UPROPERTY(EditAnywhere, Category = "Door")
 	bool bIsOpen;
 
